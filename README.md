@@ -10,10 +10,13 @@ __References__ - Contains sub-menu links to external web development references.
 __About__ - Contains sub-menu links to creator's web page and about me section
 
 ## Phase Two: Fixed List
-Not yet implement
+Display hard-coded search results about a topic of your choice
+
 ## Phase Three: From File
-Not yet implement
+Display search results read from files stored in CSV, JSON, and XML formats
+
 ## Phase Four: Google API
-Not yet implement
+Display search results obtained from using the Google Search API (see e.g. https://developers.google.com/custom-search/v1/overview) 
+
 ## Phase Five: Our Search Engine
-Not yet implement
+Display search results from your own search engine which indexes the entire content of webpages. Administration screens related to this search engine will also be needed.
