@@ -41,6 +41,7 @@ body main .result {
 }
 body main .result a {
   text-decoration: none;
+  color: #5c5179;
 }
 body main .result a:hover {
   text-decoration: underline;
