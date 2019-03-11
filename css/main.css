@@ -1,10 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto Slab", Georgia, "Times New Roman", serif;
-  background: #e4e9ed;
-}
-
 form {
   display: flex;
   flex-direction: row;
@@ -126,7 +119,30 @@ nav > ul > li .dropdown li button p {
   opacity: 0.7;
 }
 
-header {
+.nav-menu-button {
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  display: none;
+}
+
+.logo i {
+  color: #aea8d3;
+  transform: rotateY(180deg);
+  font-size: 60px;
+}
+.logo i:hover {
+  color: #736598;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Slab", Georgia, "Times New Roman", serif;
+  background: #e4e9ed;
+}
+body header {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -135,20 +151,36 @@ header {
   width: 100%;
   margin: 0 auto;
 }
-header .title {
+body header .title {
   text-align: center;
 }
-header .title h1 {
+body header .title h1 {
+  margin-top: 8px;
   margin-bottom: 8px;
 }
-header .title p {
+body header .title p {
   margin-top: 0;
   margin-bottom: 48px;
 }
-header #phase-number {
+body header #phase-number {
   font-size: 0.8rem;
   margin-top: 40px;
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0px 10px;
+  }
+  body nav {
+    display: none;
+  }
+  body .nav-menu-button {
+    display: inline;
+    position: absolute;
+    top: 18px;
+    left: 10px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
