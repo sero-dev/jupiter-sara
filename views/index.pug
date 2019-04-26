@@ -1,0 +1,99 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title=title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    meta(name='description', content='Search engine that uses multiple ways for displaying search results')
+    link(rel='icon', type='image/x-icon', href='/img/favicon.ico')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr', crossorigin='anonymous')
+    link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700', rel='stylesheet')
+    link(rel='stylesheet', href='stylesheets/main.css')
+  body
+    header
+      button.nav-menu-button
+        i.fas.fa-bars.fa-lg
+      .title
+        a.logo(href='../')
+          i.fas.fa-globe-africa
+        h1 Jupiter Search
+        p The Search of the Future
+      form#search-form(method='GET', action=search)
+        input(type=type, placeholder='Search...', value=value, disabled=disabled required=true)
+        button(type='submit')
+          i.fas.fa-search
+      nav
+        ul
+          li Course
+            ul.dropdown
+              li
+                a(href='https://www.zybooks.com/')
+                  h3 Zybooks
+                  p Replace your textbook with an interactive zyBook. Proven to drive success and save instructors time with auto-generated, auto-graded textbook replacements.
+              li
+                a(href='')
+                  h3 Course 2
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, similique.
+              li
+                a(href='')
+                  h3 Course 3
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, similique.
+              li
+                a(href='')
+                  h3 Course 4
+                  p Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, similique.
+          li Search
+            ul.dropdown
+              li
+                a#phaseTwo(href='/')
+                  h3 Phase Two: Fixed List
+                  p Display hard-coded search results about a topic of your choice.
+              li
+                a#phaseThree(href='/v3')
+                  h3 Phase Three: From File
+                  p Display search results read from files stored in CSV, JSON, and XML formats.
+              li
+                a#phaseFour(href='/v4')
+                  h3 Phase Four: Google API
+                  p Display search results obtained from using the Google Search API.
+              li
+                a#phaseFive(href='/v5')
+                  h3 Phase Five: Our Search Engine
+                  p Display search results from your own search engine which indexes the entire content of webpages.
+          li Browser
+            ul.dropdown
+              li
+                a(href='https://www.w3schools.com/js/js_window_navigator.asp')
+                  h3 Navigator
+                  p The open nature of the World Wide Web presents incredible opportunities for people who want to create websites or online applications.
+              li
+                a(href='https://www.w3schools.com/js/js_window.asp')
+                  h3 Window
+                  p W3Schools is an educational website for learning web technologies online.
+              li
+                a(href='https://www.w3schools.com/js/js_window_screen.asp')
+                  h3 Screen
+                  p Tips, Tricks, and Techniques on using Cascading Style Sheets.
+              li
+                a(href='https://www.w3schools.com/js/js_window_location.asp')
+                  h3 Location
+                  p A question and answer site for professional and enthusiast programmers.
+              li
+                a(href='https://www.w3schools.com/html/html5_geolocation.asp')
+                  h3 Geolocation
+                  p A question and answer site for professional and enthusiast programmers.
+          li About
+            ul.dropdown
+              li
+                a(href='/contact')
+                  h3 Contact Us
+                  p For anyone questions or concerns, please let us know so we can work with you.
+              li
+                a(href='https://serodev.com')
+                  h3 Sean Rodriguez
+                  p A software engineer who likes to develop front-end, back-end, and utility software.
+      p#phase-number #{phase}
+  
+  if showImport
+    include import.pug
