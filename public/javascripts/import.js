@@ -4,9 +4,9 @@ window.onload = function() {
   let resultContainer = document.getElementById('result-container');
   let downloadButton = document.getElementById('download-file');
   var filetype;
-  
+
   function loadData(data) {
-    for(let i = 0; i < data.Result.length; i++) {
+    for (let i = 0; i < data.Result.length; i++) {
       let result = document.createElement('div');
       let checkbox = document.createElement('input');
       let link = document.createElement('a');
@@ -33,14 +33,13 @@ window.onload = function() {
   }
 
   function csvToJSON(data) {
-    let lines = data.split("\n");
+    let lines = data.split('\n');
     let container = {};
     let results = [];
 
-    for(let i = 0; i < lines.length; i++) {
-  
+    for (let i = 0; i < lines.length; i++) {
       let obj = {};
-      let currentline = lines[i].split(",");
+      let currentline = lines[i].split(',');
 
       obj['title'] = currentline[0];
       obj['url'] = currentline[1];
@@ -48,7 +47,7 @@ window.onload = function() {
 
       results.push(obj);
     }
-    
+
     container['Result'] = results;
     return JSON.stringify(container);
   }
@@ -62,12 +61,15 @@ window.onload = function() {
 
     let rootElement = xmlFile.getElementsByTagName('results')[0];
 
-    for(var i = 0; i < rootElement.children.length; i++) {
-      let obj = {}
+    for (var i = 0; i < rootElement.children.length; i++) {
+      let obj = {};
 
-      obj['title'] = rootElement.childNodes[i].childNodes[0].childNodes[0].nodeValue;
-      obj['url'] = rootElement.childNodes[i].childNodes[1].childNodes[0].nodeValue;
-      obj['description'] = rootElement.childNodes[i].childNodes[2].childNodes[0].nodeValue;
+      obj['title'] =
+        rootElement.childNodes[i].childNodes[0].childNodes[0].nodeValue;
+      obj['url'] =
+        rootElement.childNodes[i].childNodes[1].childNodes[0].nodeValue;
+      obj['description'] =
+        rootElement.childNodes[i].childNodes[2].childNodes[0].nodeValue;
 
       results.push(obj);
     }
@@ -77,12 +79,12 @@ window.onload = function() {
   }
 
   function createJSONFile(checkedBoxes) {
-    let container = {}
-    let results = []
+    let container = {};
+    let results = [];
 
-    for(var i = 0; i < checkedBoxes.length; i++) {
+    for (var i = 0; i < checkedBoxes.length; i++) {
       let parent = checkedBoxes[i].parentNode;
-      let obj = {}
+      let obj = {};
 
       obj['title'] = parent.children[1].children[0].innerText;
       obj['url'] = parent.children[2].innerText;
@@ -91,56 +93,104 @@ window.onload = function() {
     }
 
     container['Result'] = results;
-    let blob = new Blob([JSON.stringify(container)], { type: 'application/json' });
-    return blob;
+    return new Blob([JSON.stringify(container)], { type: 'application/json' });
+  }
+
+  function createCSVFile(checkedBoxes) {
+    let fileString = '';
+    for (var i = 0; i < checkedBoxes.length; i++) {
+      let parent = checkedBoxes[i].parentNode;
+
+      currentLine =
+        parent.children[1].children[0].innerText +
+        ',' +
+        parent.children[2].innerText +
+        ',' +
+        parent.children[3].innerText.trim() +
+        '\n';
+      fileString += currentLine;
+    }
+
+    return new Blob([fileString], { type: 'text/csv' });
+  }
+
+  function createXMLFile(checkedBoxes) {
+    let xmlDoc = document.implementation.createDocument(null, 'results');
+    let results = xmlDoc.getElementsByTagName('results')[0];
+
+    for (var i = 0; i < checkedBoxes.length; i++) {
+      let parent = checkedBoxes[i].parentNode;
+
+      let result = xmlDoc.createElement('result');
+      let title = xmlDoc.createElement('title');
+      let url = xmlDoc.createElement('url');
+      let description = xmlDoc.createElement('description');
+
+      title.appendChild(
+        xmlDoc.createTextNode(parent.children[1].children[0].innerText)
+      );
+      url.appendChild(xmlDoc.createTextNode(parent.children[2].innerText));
+      description.appendChild(
+        xmlDoc.createTextNode(parent.children[3].innerText.trim())
+      );
+
+      results.appendChild(result);
+      result.appendChild(title);
+      result.appendChild(url);
+      result.appendChild(description);
+    }
+
+    let serializer = new XMLSerializer();
+    return new Blob([serializer.serializeToString(xmlDoc)], {
+      type: 'text/xml'
+    });
   }
 
   fileReader.onload = function(e) {
-    let text = fileReader.result;
+    let text = fileReader.result.trim();
 
     while (resultContainer.firstChild)
       resultContainer.removeChild(resultContainer.firstChild);
 
-    if(filetype == 'text/xml') text = xmlToJSON(text);
-    else if(filetype == 'text/csv') text = csvToJSON(text);
-    loadData(JSON.parse(text))
-  }
+    if (filetype == 'text/xml') text = xmlToJSON(text);
+    else if (filetype == 'text/csv') text = csvToJSON(text);
+    loadData(JSON.parse(text));
+  };
 
   fileInput.onchange = function(e) {
     let file = fileInput.files[0];
     filetype = file.type;
     fileReader.readAsText(file);
-  }
+  };
 
   downloadButton.onclick = function(e) {
     let type = document.querySelector('input[name="type"]:checked').value;
     let checkedBoxes = document.querySelectorAll('.result>input:checked');
     let filename, blob;
 
-    if(checkedBoxes.length == 0)
-      console.log("Error");
+    if (checkedBoxes.length == 0) console.log('Error');
     else {
-      if(type == 'CSV') {
+      if (type == 'CSV') {
         blob = createCSVFile(checkedBoxes);
         filename = 'result.csv';
-      } else if(type == 'XML') {
+      } else if (type == 'XML') {
         blob = createXMLFile(checkedBoxes);
         filename = 'result.xml';
       } else {
         blob = createJSONFile(checkedBoxes);
-        filename = 'result.json'
+        filename = 'result.json';
       }
 
       let url = URL.createObjectURL(blob);
-      let div = document.createElement("div");
+      let div = document.createElement('div');
       let anchor = document.createElement('a');
 
       document.body.appendChild(div);
       div.appendChild(anchor);
 
-      anchor.innerHTML = "&nbsp;";
-			div.style.width = "0";
-			div.style.height = "0";
+      anchor.innerHTML = '&nbsp;';
+      div.style.width = '0';
+      div.style.height = '0';
       anchor.href = url;
       anchor.download = filename;
 
@@ -148,6 +198,5 @@ window.onload = function() {
       anchor.dispatchEvent(event);
       document.body.removeChild(div);
     }
-  }
-}
-
+  };
+};
