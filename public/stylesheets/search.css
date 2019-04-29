@@ -7,7 +7,8 @@ body header {
   padding: 16px 0 16px 100px;
   background: white;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-  position: fixed; }
+  position: fixed;
+  z-index: 2; }
   body header .mobile-header {
     position: absolute;
     top: 15px;
@@ -31,7 +32,12 @@ body main {
     width: 90%;
     max-width: 700px;
     padding: 20px;
-    border: 1px solid black; }
+    border: 1px solid black;
+    position: relative; }
+    body main .result input {
+      position: absolute;
+      top: 5px;
+      right: 5px; }
     body main .result a {
       text-decoration: none;
       color: #5c5179; }

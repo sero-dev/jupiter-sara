@@ -15,8 +15,9 @@ block content
         button(type='submit')
           i.fas.fa-search
       p#phase-number #{phase}
-    main
+    main#result-container
       block result
-    
     if showImport
       include import.pug
+    if scriptLocation
+      script(src=scriptLocation)

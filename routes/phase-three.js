@@ -6,17 +6,17 @@ var values = {
   phase: 'Currently using Phase Three: From File',
   search: '/v3/search',
   disabled: 'true',
-  showImport: 'true'
+  showImport: 'true',
+  scriptLocation: '/javascripts/import.js'
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', values);
 });
 
-router.get('/search', function (req, res, next) {
-  var result = 
-  res.render('search_nav', values)
+router.get('/search', function(req, res) {
+  res.render('search_nav', values);
 });
 
 module.exports = router;

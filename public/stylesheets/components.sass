@@ -115,13 +115,43 @@ nav
     &:hover
       color: $darkpurple
 
-.import
-  background: white
+
+.side-menu
   position: fixed
   right: 10px
-  bottom: 0
-  input
-    padding: 4px
-    font-size: 0.9rem
-  button
-    padding: 1px 6px
+  bottom: 90px
+  width: 309px
+
+  h4
+    margin: 0
+
+  .import
+    background: white
+    padding: 15px
+    position: fixed
+    border: 1px solid black
+    
+    input
+      font-size: 0.8rem
+  .export
+    background: white
+    padding: 15px
+    border: 1px solid black
+    margin-bottom: 10px
+    position: relative
+    input
+      margin-right: 10px
+    label
+      font-size: 0.8rem
+    a
+      position: absolute
+      padding: 5px 15px
+      background: $purple
+      font-size: 0.85rem
+      border: 1px solid black
+      bottom: 10px
+      right: 10px
+      &:hover
+        background: $darkpurple
+        color: white
+        cursor: pointer

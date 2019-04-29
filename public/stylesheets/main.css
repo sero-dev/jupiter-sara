@@ -109,16 +109,42 @@ nav > ul {
   .logo i:hover {
     color: #736598; }
 
-.import {
-  background: white;
+.side-menu {
   position: fixed;
   right: 10px;
-  bottom: 0; }
-  .import input {
-    padding: 4px;
-    font-size: 0.9rem; }
-  .import button {
-    padding: 1px 6px; }
+  bottom: 90px;
+  width: 309px; }
+  .side-menu h4 {
+    margin: 0; }
+  .side-menu .import {
+    background: white;
+    padding: 15px;
+    position: fixed;
+    border: 1px solid black; }
+    .side-menu .import input {
+      font-size: 0.8rem; }
+  .side-menu .export {
+    background: white;
+    padding: 15px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    position: relative; }
+    .side-menu .export input {
+      margin-right: 10px; }
+    .side-menu .export label {
+      font-size: 0.8rem; }
+    .side-menu .export a {
+      position: absolute;
+      padding: 5px 15px;
+      background: #aea8d3;
+      font-size: 0.85rem;
+      border: 1px solid black;
+      bottom: 10px;
+      right: 10px; }
+      .side-menu .export a:hover {
+        background: #736598;
+        color: white;
+        cursor: pointer; }
 
 body {
   margin: 0;

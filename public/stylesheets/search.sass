@@ -11,6 +11,7 @@ body
     background: white
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1)
     position: fixed
+    z-index: 2
     
     .mobile-header
       position: absolute
@@ -42,7 +43,11 @@ body
       max-width: 700px
       padding: 20px
       border: 1px solid black
-
+      position: relative
+      input
+        position: absolute
+        top: 5px
+        right: 5px
       a
         text-decoration: none
         color: darken($darkpurple, 10)

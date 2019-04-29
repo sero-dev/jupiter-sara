@@ -1,4 +1,17 @@
-form.import#import(action=search, method='GET')
-  input(type="file" accept=".xml, .csv, .json")
-  button(type="submit")
-    i.fas.fa-search
+.side-menu
+  .export
+    h4 Export search results
+    input(type="radio", name="type", value="JSON" checked)
+    label JSON
+    br
+    input(type="radio", name="type", value="CSV")
+    label CSV
+    br
+    input(type="radio", name="type", value="XML")
+    label XML
+
+    a#download-file(download) Download
+
+  .import
+    h4 Import search results
+    input#filename(type="file", name="filename", accept=".xml, .csv, .json")
