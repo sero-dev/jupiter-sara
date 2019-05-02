@@ -1,14 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var values = {
+let values = {
   title: 'Jupiter Search',
   phase: 'Currently using Phase Three: From File',
   search: '/v3/search',
   disabled: 'true',
   showImport: 'true',
   scriptLocation: '/javascripts/import.js'
-}
+};
 
 /* GET home page. */
 router.get('/', function(req, res) {

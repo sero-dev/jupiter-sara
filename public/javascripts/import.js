@@ -3,7 +3,7 @@ window.onload = function() {
   let fileReader = new FileReader();
   let resultContainer = document.getElementById('result-container');
   let downloadButton = document.getElementById('download-file');
-  var filetype;
+  let filetype;
 
   function loadData(data) {
     for (let i = 0; i < data.Result.length; i++) {
@@ -153,7 +153,8 @@ window.onload = function() {
       resultContainer.removeChild(resultContainer.firstChild);
 
     if (filetype == 'text/xml') text = xmlToJSON(text);
-    else if (filetype == 'text/csv') text = csvToJSON(text);
+    else if (filetype == 'text/csv' || filetype == 'application/vnd.ms-excel')
+      text = csvToJSON(text);
     loadData(JSON.parse(text));
   };
 

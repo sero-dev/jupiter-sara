@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const search = require('../search.js');
 
-var values = {
+let values = {
   title: 'Jupiter Search',
   phase: 'Currently using Phase Four: Google API',
   search: '/v4/search',
-  disabled: 'true',
   showImport: 'true',
   scriptLocation: '/javascripts/import.js'
 };
@@ -16,6 +16,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/search', function(req, res) {
+  let data = search.getGoogleResults();
   res.render('search_nav', values);
 });
 
