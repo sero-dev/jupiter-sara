@@ -1,0 +1,10 @@
+extends search_nav.pug
+
+block links
+  each result in results
+    .result
+      input(type="checkbox")
+      a(href='https://www.imdb.com/title/tt1235170/')
+        h2= result.title
+      span.url= result.link
+      p= result.snippet
