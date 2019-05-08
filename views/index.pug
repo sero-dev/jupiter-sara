@@ -19,7 +19,7 @@ html(lang='en')
         h1 Jupiter Search
         p The Search of the Future
       form#search-form(method='GET', action=search)
-        input(type=type, placeholder='Search...', value=value, disabled=disabled)
+        input(type='text', placeholder='Search...', value=value, disabled=disabled, name='q' required=true)
         button(type='submit')
           i.fas.fa-search
       nav
@@ -63,29 +63,29 @@ html(lang='en')
           li Browser
             ul.dropdown
               li
-                a(href='https://www.w3schools.com/js/js_window_navigator.asp')
+                a
                   h3 Navigator
-                  p The open nature of the World Wide Web presents incredible opportunities for people who want to create websites or online applications.
+                  p#navigator
               li
-                a(href='https://www.w3schools.com/js/js_window.asp')
+                a
                   h3 Window
-                  p W3Schools is an educational website for learning web technologies online.
+                  p#window
               li
-                a(href='https://www.w3schools.com/js/js_window_screen.asp')
+                a
                   h3 Screen
-                  p Tips, Tricks, and Techniques on using Cascading Style Sheets.
+                  p#screen
               li
-                a(href='https://www.w3schools.com/js/js_window_location.asp')
+                a
                   h3 Location
-                  p A question and answer site for professional and enthusiast programmers.
+                  p#location
               li
-                a(href='https://www.w3schools.com/html/html5_geolocation.asp')
+                a
                   h3 Geolocation
-                  p A question and answer site for professional and enthusiast programmers.
+                  p#geolocation
           li About
             ul.dropdown
               li
-                a(href='/contact')
+                a(href='https://jupitersearch.typeform.com/to/LOp3Cb')
                   h3 Contact Us
                   p For anyone questions or concerns, please let us know so we can work with you.
               li
@@ -93,3 +93,4 @@ html(lang='en')
                   h3 Sean Rodriguez
                   p A software engineer who likes to develop front-end, back-end, and utility software.
       p#phase-number #{phase}
+    script(src='../javascripts/index.js')

@@ -10,13 +10,13 @@ block content
         a.logo(href='../../')
           i.fas.fa-globe-africa
           h1 Jupiter Search
-      form(method='GET', action='./search/')
-        input(type=type, placeholder='Search...', value=value, disabled=disabled, required=true)
+      form(method='GET', action='./search')
+        input(type=type, placeholder='Search...', value=value, name='q' disabled=disabled, required=true)
         button(type='submit')
           i.fas.fa-search
       p#phase-number #{phase}
     main#result-container
-      block result
+      block links
     if showImport
       include import.pug
     if scriptLocation
