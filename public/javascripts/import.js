@@ -3,6 +3,7 @@ window.onload = function() {
   let fileReader = new FileReader();
   let resultContainer = document.getElementById('result-container');
   let downloadButton = document.getElementById('download-file');
+  let title = document.getElementsByTagName('title')[0].innerText.split(' - ')[0].trim().toLowerCase()
   let filetype;
 
   function loadData(data) {
@@ -167,19 +168,27 @@ window.onload = function() {
   downloadButton.onclick = function(e) {
     let type = document.querySelector('input[name="type"]:checked').value;
     let checkedBoxes = document.querySelectorAll('.result>input:checked');
-    let filename, blob;
+    let now = new Date();
+    let blob;
+
+    let filename = title.replace(' ', '_') + '_' +
+      now.getFullYear().toString() +
+      (now.getMonth() + 1).toString() +
+      now.getDate().toString() +
+      now.getHours().toString() +
+      now.getMinutes().toString()
 
     if (checkedBoxes.length == 0) console.log('Error');
     else {
       if (type == 'CSV') {
         blob = createCSVFile(checkedBoxes);
-        filename = 'result.csv';
+        filename += '.csv';
       } else if (type == 'XML') {
         blob = createXMLFile(checkedBoxes);
-        filename = 'result.xml';
+        filename += '.xml';
       } else {
         blob = createJSONFile(checkedBoxes);
-        filename = 'result.json';
+        filename += '.json';
       }
 
       let url = URL.createObjectURL(blob);
