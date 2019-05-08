@@ -47,6 +47,8 @@ nav > ul {
       transform: translate(-120px, 10px); }
     nav > ul > li:nth-of-type(3) .dropdown {
       transform: translate(-104px, 10px); }
+      nav > ul > li:nth-of-type(3) .dropdown li:active {
+        background: #e4e9ed; }
     nav > ul > li:nth-of-type(4) .dropdown {
       transform: translate(-244px, 10px); }
     nav > ul > li .dropdown {
