@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+  body
+    header
+      button.nav-menu-button
+        i.fas.fa-bars.fa-lg
+      .title
+        a.logo(href='../')
+          i.fas.fa-globe-africa
+        h1 Jupiter Admin
+        p Take control of the future
+      form#search-form(method='POST', action='index')
+        .searchbox
+          input(type='url', placeholder='Enter a site to be index...', name='q' required=true)
+          button(type='submit')
+            i.fas.fa-binoculars
+      a#history(href="history") 
+        i.fas.fa-history.fa-2x
+        <br> View History
+        

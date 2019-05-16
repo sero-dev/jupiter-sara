@@ -3,16 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha || true"
   },
   "dependencies": {
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
+    "mocha": "^6.1.4",
     "morgan": "~1.9.0",
+    "mysql2": "^1.6.5",
     "node-sass-middleware": "0.11.0",
-    "pg": "^7.10.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "puppeteer": "^1.15.0",
+    "sequelize": "^5.8.5"
   }
 }

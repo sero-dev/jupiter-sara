@@ -19,9 +19,17 @@ html(lang='en')
         h1 Jupiter Search
         p The Search of the Future
       form#search-form(method='GET', action=search)
-        input(type='text', placeholder='Search...', value=value, disabled=disabled, name='q' required=true)
-        button(type='submit')
-          i.fas.fa-search
+        .searchbox
+          input(type='text', placeholder='Search...', value=value, disabled=disabled, name='q' required=true)
+          button(type='submit')
+            i.fas.fa-search
+        if showOptions
+          .options
+            input(type='checkbox' name='partial')
+            label(for='partial') Partial Search
+            input(type='checkbox' name='caseinsensitive')
+            label(for='caseinsensitive') Case Insensitive 
+            
       nav
         ul
           li Course
@@ -93,4 +101,6 @@ html(lang='en')
                   h3 Sean Rodriguez
                   p A software engineer who likes to develop front-end, back-end, and utility software.
       p#phase-number #{phase}
+      a(href="./admin/") 
+        i.fas.fa-tools.fa-2x
     script(src='../javascripts/index.js')

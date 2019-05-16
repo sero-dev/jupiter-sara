@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const phaseThreeRouter = require('./routes/phase-three');
 const phaseFourRouter = require('./routes/phase-four');
 const phaseFiveRouter = require('./routes/phase-five');
+const admin = require('./routes/admin');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/admin', admin);
 app.use('/v3', phaseThreeRouter);
 app.use('/v4', phaseFourRouter);
 app.use('/v5', phaseFiveRouter);

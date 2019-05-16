@@ -11,9 +11,16 @@ block content
           i.fas.fa-globe-africa
           h1 Jupiter Search
       form(method='GET', action='./search')
-        input(type=type, placeholder='Search...', value=value, name='q' disabled=disabled, required=true)
-        button(type='submit')
-          i.fas.fa-search
+        .searchbox
+          input(type='text', placeholder='Search...', value=value, name='q' disabled=disabled, required=true)
+          button(type='submit')
+            i.fas.fa-search
+        if showOptions
+          .options
+            input(type='checkbox' name='partial')
+            label(for='partial') Partial Search
+            input(type='checkbox' name='caseinsensitive')
+            label(for='caseinsensitive') Case Insensitive 
       p#phase-number #{phase}
     main#result-container
       block links

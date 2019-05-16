@@ -3,7 +3,11 @@ window.onload = function() {
   let fileReader = new FileReader();
   let resultContainer = document.getElementById('result-container');
   let downloadButton = document.getElementById('download-file');
-  let title = document.getElementsByTagName('title')[0].innerText.split(' - ')[0].trim().toLowerCase()
+  let title = document
+    .getElementsByTagName('title')[0]
+    .innerText.split(' - ')[0]
+    .trim()
+    .toLowerCase();
   let filetype;
 
   function loadData(data) {
@@ -171,12 +175,14 @@ window.onload = function() {
     let now = new Date();
     let blob;
 
-    let filename = title.replace(' ', '_') + '_' +
+    let filename =
+      title.replace(' ', '_') +
+      '_' +
       now.getFullYear().toString() +
       (now.getMonth() + 1).toString() +
       now.getDate().toString() +
       now.getHours().toString() +
-      now.getMinutes().toString()
+      now.getMinutes().toString();
 
     if (checkedBoxes.length == 0) console.log('Error');
     else {

@@ -4,7 +4,7 @@ block links
   each result in results
     .result
       input(type="checkbox")
-      a(href=result.url)
+      a(href=result.link)
         h2= result.title
-      span.url= result.url
-      p= result.description
+      span.url= result.link
+      p= result.snippet

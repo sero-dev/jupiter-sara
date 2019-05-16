@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+  body
+    table
+      tr
+        th ID
+        th Terms
+        th Count
+        th Time To Search (sec)
+      each result in results
+        tr
+          td= result.id
+          td= result.terms
+          td= result.count
+          td= result.timeToSearch
+
+      

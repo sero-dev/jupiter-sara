@@ -18,14 +18,16 @@ router.get('/', function(req, res) {
 });
 
 router.get('/search/', function(req, res) {
-  const url = `https://www.googleapis.com/customsearch/v1/?key=${login.key}&cx=${login.engineID}&q=${req.query.q}`;
-  values.title = `${req.query.q} - Jupiter Search`
+  const url = `https://www.googleapis.com/customsearch/v1/?key=${
+    login.key
+  }&cx=${login.engineID}&q=${req.query.q}`;
+  values.title = `${req.query.q} - Jupiter Search`;
 
   request.get(url, (error, response, body) => {
     let json = JSON.parse(body);
     values.results = json.items;
-    res.render('results', values);
-  })
+    res.render('gresults', values);
+  });
 });
 
 module.exports = router;
